@@ -20,6 +20,7 @@ jobs:
 
       - name: CodeCheck
         run: |
-          for file in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only -- '*.cs') ; do
+          for file in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only) ; do
           echo files
           done
+          
