@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # git diffをするためにターゲットブランチをフェッチする
-      - name: 'Fetch'
+      - name: Fetch
         run: |
           git fetch --depth 1 origin ${GITHUB_BASE_REF}
           git fetch --depth 1 origin ${GITHUB_HEAD_REF}
@@ -23,13 +23,15 @@ jobs:
       - name: CodeCheck
         run: |
           for file in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only) ; do
+          echo git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only
           echo "A"
           echo file
           done
 
           for file in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=M --name-only) ; do
-          echo file
+          echo git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=M --name-only
           echo "M"
+          echo file
           done
       
       - name: AddReviewer
