@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - main
+  push:
 
 jobs:
   build:
@@ -16,11 +17,12 @@ jobs:
 
       # git diffをするためにターゲットブランチをフェッチする
       - name: 'Fetch'
-        run: git fetch --depth 1 origin ${TARGET_BRANCH}
+        run: |
+          git fetch --depth 1 origin ${GITHUB_BASE_REF}
+          git fetch --depth 1 origin ${GITHUB_HEAD_REF}
 
       - name: CodeCheck
         run: |
           for file in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only) ; do
           echo files
           done
-          
