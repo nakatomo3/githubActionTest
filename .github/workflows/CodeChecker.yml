@@ -18,8 +18,8 @@ jobs:
       # git diffをするためにターゲットブランチをフェッチする
       - name: 'Fetch'
         run: |
-        git fetch --depth 1 origin ${GITHUB_BASE_REF}
-        git fetch --depth 1 origin ${GITHUB_HEAD_REF}
+          git fetch --depth 1 origin ${GITHUB_BASE_REF}
+          git fetch --depth 1 origin ${GITHUB_HEAD_REF}
 
       - name: CodeCheck
         run: |
