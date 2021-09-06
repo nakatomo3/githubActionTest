@@ -24,12 +24,12 @@ jobs:
         run: |
           for f in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only) ; do
           echo "A"
-          f
+          echo $f
           done
 
           for f in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=M --name-only) ; do
           echo "M"
-          f
+          echo $f
           done
       
       - name: AddReviewer
