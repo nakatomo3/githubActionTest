@@ -1,0 +1,25 @@
+# workflowの名前
+name: Sample actions
+
+# トリガーの設定
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # 実行環境の設定
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # git diffをするためにターゲットブランチをフェッチする
+      - name: 'Fetch'
+        run: git fetch --depth 1 origin ${TARGET_BRANCH}
+
+      - name: CodeCheck
+        run: |
+          for file in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only -- '*.cs') ; do
+          echo files
+          done
