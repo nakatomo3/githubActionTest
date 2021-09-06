@@ -30,7 +30,7 @@ jobs:
           for f in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=M --name-only) ; do
           echo "M"
           echo $f
-          cat f
+          type f
           done
       
       - name: AddReviewer
