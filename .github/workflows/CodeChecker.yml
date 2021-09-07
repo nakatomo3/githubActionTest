@@ -22,16 +22,15 @@ jobs:
 
       - name: CodeCheck
         run: |
-          for file in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only) ; do
-          echo git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only
+          for f in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=A --name-only) ; do
           echo "A"
-          echo file
+          echo $f
           done
 
-          for file in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=M --name-only) ; do
-          echo git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=M --name-only
+          for f in $(git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --diff-filter=M --name-only) ; do
           echo "M"
-          echo file
+          echo $f
+          type $f
           done
       
       - name: AddReviewer
